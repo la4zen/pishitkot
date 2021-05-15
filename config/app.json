@@ -1,0 +1,11 @@
+{
+    "database" : {
+        "username":"la4z",
+        "dbname":"pishikot",
+        "sslmode":"disable",
+        "host":"localhost"
+    },
+    "jwt" : {
+        "key":"SecretKEEEY"
+    }
+}
