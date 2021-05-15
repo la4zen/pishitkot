@@ -5,6 +5,7 @@
                 <div class="row justify-content-center my-auto">
                     <div class="col-md-8 col-10 my-5">
                         <h3 class="mb-5 text-center heading">Мы ПишиКот :d</h3>
+                        <hr class="">
                         <h6 class="msg-info">Класс, вот ваша форма</h6>
                         <div class="form-group"> <label class="form-control-label text-muted">Логин</label> <input type="text" v-model="login" placeholder="Гениальный логин" class="form-control"> </div>
                         <div class="form-group"> <label class="form-control-label text-muted">Пароль</label> <input type="password" v-model="password" placeholder="Ваш гиперсуперпупер сложный пароль" class="form-control"> </div>
@@ -86,11 +87,17 @@ export default {
 }
 </script>
 <style>
+
+.text2{
+    color: black;
+    font: small-caps;
+}
+
 body {
-    color: #000;
+    color: #619ADA;
     overflow-x: hidden;
     height: 100%;
-    background-image: linear-gradient(to right, #0FF1CE, green);
+    background-image: linear-gradient(to right, #619ADA, #619ADA);
     background-repeat: no-repeat
 }
 
@@ -113,7 +120,7 @@ textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #D500F9 !important;
+    border: 1px solid #C25E55 !important;
     outline-width: 0;
     font-weight: 400
 }
@@ -125,8 +132,8 @@ button:focus {
     outline-width: 0
 }
 
-.card {
-    border-radius: 0;
+.card0 {
+    border-radius: 1;
     border: none
 }
 
@@ -137,7 +144,13 @@ button:focus {
 
 .card2 {
     width: 50%;
-    background-image: linear-gradient(to right, #0FF1CE, #D500F9)
+    margin: 4px;
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    background-image: linear-gradient(232deg, #dd4638, #619ADA)
+}
+
+.card2:hover{
+    background-image: linear-gradient(297deg, #dd4638, #619ADA)
 }
 
 #logo {
@@ -175,30 +188,36 @@ button:focus {
 .btn-color {
     border-radius: 50px;
     color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #0FF1CE);
     padding: 15px;
     cursor: pointer;
+    transition: 0.5s;
+    background-image: linear-gradient(to right, #619ADA, #619ADA);
     border: none !important;
     margin-top: 40px
 }
 
 .btn-color:hover {
     color: #fff;
-    background-image: linear-gradient(to right, #0FF1CE, #FFD54F)
+    background-image: linear-gradient(to right, #C25E55, #C25E55)
+}
+
+.sm-text{
+    color: black;
 }
 
 .btn-white {
     border-radius: 50px;
-    color: #D500F9;
+    color: black;
+    transition: 0.2s cubic-bezier(.17,.67,.91,.51);
     background-color: #fff;
     padding: 8px 40px;
     cursor: pointer;
-    border: 2px solid #0FF1CE !important
+    border: 2px solid #619ADA !important
 }
 
 .btn-white:hover {
     color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9)
+    background-image: linear-gradient(to right, #C25E55, #C25E55)
 }
 
 a {
