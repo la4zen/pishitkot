@@ -25,7 +25,7 @@ func New() *Store {
 	_db, err := gorm.Open(postgres.Open(fmt.Sprintf("database=%s user=%s password=%s host=%s sslmode=%s",
 		config.Database.Dbname, config.Database.Username, config.Database.Password, config.Database.Host, config.Database.Sslmode)),
 		&gorm.Config{})
-	_db.AutoMigrate(&models.User{})
+	_db.AutoMigrate(&models.User{}, &models.Task{})
 	if err != nil {
 		panic(err)
 	}
