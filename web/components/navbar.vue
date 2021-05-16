@@ -1,25 +1,10 @@
 <template>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"> ПишиКот </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <nuxt-link active-class="active" class="nav-link" to="/">Home</nuxt-link>
-                    </li>
-                    <li class="nav-item">
-                        <nuxt-link active-class="active" class="nav-link" to="/auth/login">Auth</nuxt-link>
-                    </li>
-                    <li class="nav-item">
-                        <nuxt-link active-class="active" class="nav-link" to="/"></nuxt-link>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar navbar-light navbar-expand sticky-top bg-light navigation-clean">
+        <div class="container">
+            <div><a class="navbar-brand" style="margin: 0;margin-right: 0px;width: 100px;height: 35px;padding: 0px;padding-top: 0px;margin-top: 0;margin-bottom: 0;color: var(--bs-gray-dark);">Пиши</a><a class="navbar-brand border rounded-0 border-light shadow-none" style="margin: 0;margin-right: 0px;width: 100px;height: 35px;padding: 0px;padding-top: 0px;margin-top: 0;margin-bottom: 0;color: var(--bs-blue);">Кот</a><a class="navbar-brand" style="margin: 0;margin-right: 0px;width: 100px;height: 35px;padding: 0px;padding-top: 0px;margin-top: 0;margin-bottom: 0;color: var(--bs-gray-dark);">.</a></div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
+            <div class="collapse navbar-collapse" id="navcol-1"></div><button class="btn btn-primary" type="button" style="margin-right: 10px;">Начать</button>
+        </div>
+    </nav>
 </template>
 <script>
 export default {}
