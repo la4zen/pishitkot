@@ -73,7 +73,7 @@ export default {
                 localStorage.setItem("token", response.data.token)
                 localStorage.setItem("refresh_token", response.data.refresh_token)
                 if (this.user_type === "Ученик") {
-                    location.href = "/start/" + response.user.id
+                    location.href = "/start"
                 }
             }).catch((err) => {
                 alert(err)
@@ -93,8 +93,7 @@ export default {
 }
 </script>
 <style>
-
-.text2{
+.text2 {
     color: black;
     font: small-caps;
 }

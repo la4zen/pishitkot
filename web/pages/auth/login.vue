@@ -63,7 +63,7 @@ export default {
                 this.$axios.setToken(response.token, "Bearer")
                 localStorage.setItem("token", response.token)
                 localStorage.setItem("refresh_token", response.refresh_token)
-                location.href = "/lk/users/" + response.user.id
+                location.href = "/lk/users"
             }).catch((err) => {
                 console.log(err)
                 alert(err)

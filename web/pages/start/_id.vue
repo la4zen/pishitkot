@@ -1,35 +1,57 @@
 <template>
     <div class="container">
         <div class="loading" v-if="!loaded">
-            
+            Загрузочка...
         </div>
-        <div v-else class="editorMain">
-            <div class="editorlines">
-                <div v-for="(_, index) in code.split('\n')">
-                    {{ ++index }}
+        <div v-else>
+            <div class="editorMain">
+                <div class="editorlines">
+                    <div v-for="(_, index) in code.split('\n')">
+                        {{ ++index }}
+                    </div>
+                </div>
+                <div class="editor">
+                    <textarea autocomplete="off" v-model="code" disabled/>
                 </div>
             </div>
-            <div class="editor">
-                <textarea autocomplete="off" v-model="code"/>
+            <div class="linter">
+                <div v-if="stepScene == 0">
+                    Привет, {{ user.first_name }}!
+                    <button @click="stepScene++">
+                        Привет
+                    </button>
+                </div>
+                <div v-if="stepScene == 1">
+                    
+                </div>
             </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data : () => ({
         user : null,
-        loaded : true,
-        code : "x = 5\ny = 3\nprint(x+y)",
+        loaded : false,
+        code : "x = 5\ny = 3\nz = x + y\nprint(z)",
+        stepScene : 0,
     }),
     methods: {
-
     },
-    mounted : () => ({
-
-    })
+    mounted : function() {
+        this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
+        this.$axios.$get("http://la4z.xyz:8080/api/user").then((response) => {
+            this.user = response.user
+            this.loaded = true
+            console.log(this.user)
+        }).catch((error) => {
+            location.href = "/auth/login"
+        })
+    }
 }
 </script>
+
 <style>
 .editorlines {
     display: inline-block;
@@ -50,5 +72,8 @@ export default {
     display: flex;
     flex-direction: row;
     width: 800px;
+}
+.linter {
+
 }
 </style>
