@@ -28,7 +28,9 @@ func (s *Service) Login(c *gin.Context) {
 		})
 		return
 	}
+	s.User.Clean(user)
 	c.JSON(200, gin.H{
+		"user" : user,
 		"token":         token[0],
 		"refresh_token": token[1],
 	})
@@ -56,7 +58,9 @@ func (s *Service) Register(c *gin.Context) {
 		})
 		return
 	}
+	s.User.Clean(user)
 	c.JSON(200, gin.H{
+		"user" : user,
 		"token":         token[0],
 		"refresh_token": token[1],
 	})

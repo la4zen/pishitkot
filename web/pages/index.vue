@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div style="margin:0;padding:0">
     <nav class="navbar navbar-light navbar-expand sticky-top bg-light navigation-clean">
 		<div class="container">
@@ -68,6 +69,9 @@
 		</div>
 	</footer>
   </div>
+=======
+  
+>>>>>>> 4f68e8664bcd08dacc04165611d16eb0ee05951d
 </template>
 
 <script>
@@ -81,6 +85,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -187,4 +192,6 @@ footer.footer {
   background-color: #f8f9fa !important;
 }
 
+=======
+>>>>>>> 4f68e8664bcd08dacc04165611d16eb0ee05951d
 </style>

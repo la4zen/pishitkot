@@ -37,7 +37,6 @@
 </template>
 <script>
 import error from "@/components/error"
-import Error from '../../components/error.vue'
 export default {
     components : {
         error
@@ -51,10 +50,15 @@ export default {
         last_name : null,
         age : null,
         user_type : null,
-        phrases : ["5:34  la4zen : Вообще то я тут баг на JWT словил, думаю в этот раз паники в приложении не будет", "Ну или будет :О", "да не, по тестам гнал, всё пашет", "дебажил на проде", "Почему нет?"]
+        phrases : ["Начинаем по новому"]
     }),
     methods : {
         register : function() {
+            this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
+            this.$axios.$post("http://localhost:8080/api/auth/accessible").then((response) => {
+                location.href = "/lk/users/"
+                return
+            })
             this.$axios.$post("http://localhost:8080/users/register", {
                 login:this.login,
                 age:this.age,
@@ -68,10 +72,12 @@ export default {
                 this.$axios.setToken(response.data.token, "Bearer")
                 localStorage.setItem("token", response.data.token)
                 localStorage.setItem("refresh_token", response.data.refresh_token)
+                if (this.user_type === "Ученик") {
+                    location.href = "/start/" + response.user.id
+                }
             }).catch((err) => {
-                console.log(err)
+                alert(err)
                 error.methods.sendError("err")
-                alert("Ошибочка вышла...")
             })
         },
     },
