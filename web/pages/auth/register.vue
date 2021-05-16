@@ -244,7 +244,7 @@ a:hover {
     }
 
     .card2 {
-        width: 100%
+        width: 0%
     }
 
     .right {
