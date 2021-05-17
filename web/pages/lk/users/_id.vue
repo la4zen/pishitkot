@@ -3,7 +3,9 @@
         <h1 v-if="user">
             Почта : {{ user.email }} <br>
             Возраст : {{ user.age }} <br>
-            Статус : {{ user.user_type.toLowerCase() }}
+            Статус : {{ user.user_type.toLowerCase() }}<br>
+            <nuxt-link to="/playground">Песочница</nuxt-link>
+            <nuxt-link to="/tasks">Задания</nuxt-link>
         </h1>
         <h1 v-else>
             Пользователя не существует.

@@ -1,13 +1,24 @@
 <template>
     <section class="container">
         Панель задач
+        <div class="tasks"> 
+            <li v-for="task in tasks">
+                <nuxt-link :to="task[1]"> {{ task[0]}} </nuxt-link>
+            </li>
+        </div>
         <nuxt-link to="/playground"> Песочница </nuxt-link>
     </section>
 </template>
 <script>
 export default {
     data : () => ({
-        
+        tasks : [
+            ["Арифметические операции", "/tasks/1"],
+            ["Условия", "/tasks/2"],
+            ["Циклы", "/tasks/3"],
+            ["Функции", "/tasks/4"],
+            ["Фукции, возвращающие результат", "/tasks/5"]
+        ]
     }),
     methods : {
 
