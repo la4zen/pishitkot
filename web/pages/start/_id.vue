@@ -172,7 +172,7 @@ body{
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
   background-image: url("~assets/img/Back.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 .editorlines {
     display: inline-block;

@@ -6,7 +6,7 @@
         <div v-else>
             <div class="editorMain">
                 <div class="editorlines">
-                    <div v-for:="(_, index) in code.split('\n')">
+                    <div v-for="(_, index) in code.split('\n')">
                         {{ ++index }}
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                     <textarea autocomplete="off" v-model="code" :disabled="editorLock"/>
                 </div>
             </div>
-            <nuxt-link @click="checkTask()" class="btn btn-primary"> Проверить </nuxt-link> 
+            <button @click="checkTask()" class="btn btn-primary"> Проверить </button> 
             <div class="output">
                 {{ output }}
             </div>
