@@ -14,7 +14,7 @@
                     <textarea autocomplete="off" v-model="code" :disabled="editorLock"/>
                 </div>
             </div>
-            <button @click="checkTask()"> Проверить </button> 
+            <button class="btn btn-primary" @click="checkTask()"> Проверить </button> 
             <div class="output">
                 {{ output }}
             </div>

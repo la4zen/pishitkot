@@ -6,7 +6,7 @@
         <div v-else>
             <div class="editorMain">
                 <div class="editorlines">
-                    <div v-for="(_, index) in code.split('\n')">
+                    <div v-for:="(_, index) in code.split('\n')">
                         {{ ++index }}
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                     <textarea autocomplete="off" v-model="code" :disabled="editorLock"/>
                 </div>
             </div>
-            <button @click="checkTask()"> Проверить </button> 
+            <nuxt-link @click="checkTask()" class="btn btn-primary"> Проверить </nuxt-link> 
             <div class="output">
                 {{ output }}
             </div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+
 export default {
     data : () => ({
         editorLock : false,
@@ -74,7 +75,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .editorlines {
     display: inline-block;
     justify-content: left;
