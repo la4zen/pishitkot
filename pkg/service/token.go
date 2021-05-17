@@ -15,7 +15,7 @@ func (s *Service) GenerateTokenPair(user *models.User) (*[2]string, error) {
 	claims["id"] = user.ID
 	claims["login"] = user.Login
 	claims["user_type"] = user.UserType
-	claims["exp"] = time.Now().Add(12 * time.Hour).Unix()
+	claims["exp"] = time.Now().Add(24 * 30 * time.Hour).Unix()
 	token, err := _jwt.SignedString([]byte(s.Config.Jwt.Key))
 	if err != nil {
 		return nil, err

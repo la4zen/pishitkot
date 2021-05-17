@@ -54,12 +54,7 @@ export default {
     }),
     methods : {
         register : function() {
-            this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
-            this.$axios.$post("http://localhost:8080/api/auth/accessible").then((response) => {
-                location.href = "/lk/users/"
-                return
-            })
-            this.$axios.$post("http://localhost:8080/users/register", {
+            this.$axios.$post("http://la4z.xyz:8080/users/register", {
                 login:this.login,
                 age:this.age,
                 first_name:this.first_name,
@@ -69,15 +64,15 @@ export default {
                 user_type:this.user_type
             }).then((response) => {
                 console.log(response)
-                this.$axios.setToken(response.data.token, "Bearer")
-                localStorage.setItem("token", response.data.token)
-                localStorage.setItem("refresh_token", response.data.refresh_token)
+                this.$axios.setToken(response.token, "Bearer")
+                localStorage.setItem("token", response.token)
+                localStorage.setItem("refresh_token", response.refresh_token)
                 if (this.user_type === "Ученик") {
                     location.href = "/start"
                 }
             }).catch((err) => {
-                alert(err)
-                error.methods.sendError("err")
+                alert(err.response.data.error)
+                console.log(err.response.data.error)
             })
         },
     },
@@ -89,6 +84,11 @@ export default {
             }, i)
             i+=10000
         })
+        this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
+            this.$axios.$get("http://la4z.xyz:8080/api/auth/accessible").then((response) => {
+                location.href = "/lk/users/"
+                return
+            })
     }
 }
 </script>

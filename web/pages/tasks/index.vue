@@ -1,6 +1,7 @@
 <template>
     <section class="container">
-
+        Панель задач
+        <nuxt-link to="/playground"> Песочница </nuxt-link>
     </section>
 </template>
 <script>

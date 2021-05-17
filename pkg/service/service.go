@@ -48,5 +48,5 @@ func (s *Service) Start() {
 	a.POST("/check_task", s.CheckTask)
 	a.GET("/auth/refresh_token", authMiddleware.RefreshHandler)
 	a.GET("/ws/event", s.UpgradeConnection)
-	r.Run()
+	r.Run("0.0.0.0:8080")
 }

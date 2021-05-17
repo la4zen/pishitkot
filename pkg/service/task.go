@@ -1,13 +1,20 @@
 package service
 
 import (
-	"fmt"
+	"encoding/json"
+	"io/ioutil"
+	"os"
+	"os/exec"
 	"pishikot/pkg/models"
 	"strconv"
 
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
 )
+
+type RequestWithCode struct {
+	Code string `json:"code,omitempty"`
+}
 
 func (s *Service) CheckTask(c *gin.Context) {
 	claims := jwt.ExtractClaims(c)
@@ -16,7 +23,37 @@ func (s *Service) CheckTask(c *gin.Context) {
 		Login:    claims["login"].(string),
 		UserType: claims["user_type"].(string),
 	}
-	fmt.Println(user) // тут логика отправки тасков на тест, допилю как нибудь когда нибудь.
+	req := &RequestWithCode{}
+	c.Bind(&req)
+	if req.Code == "" {
+		c.JSON(400, "code is not defined")
+		return
+	}
+	var commandpath string = "/tmp/" + user.Login + ".py"
+	ioutil.WriteFile(commandpath, []byte(req.Code), 0777)
+	cmd, _ := exec.Command("pylint", commandpath, "-E", "-f", "json").Output()
+	if string(cmd) != "[]\n" {
+		_json := &[]map[string]interface{}{}
+		json.Unmarshal(cmd, &_json)
+		c.JSON(200, gin.H{
+			"error":  _json,
+			"output": nil,
+		})
+		return
+	}
+	cmd, err := exec.Command("python", commandpath).Output()
+	os.Remove(commandpath)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error":  nil,
+			"output": string(cmd),
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"error":  nil,
+		"output": string(cmd),
+	})
 }
 
 func (s *Service) GetTask(c *gin.Context) {
@@ -30,7 +67,7 @@ func (s *Service) GetTask(c *gin.Context) {
 	id, err := strconv.Atoi(_id)
 	if err != nil {
 		c.JSON(500, gin.H{
-			"errpr": err.Error(),
+			"error": err.Error(),
 		})
 		return
 	}

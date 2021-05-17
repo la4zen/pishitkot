@@ -51,8 +51,8 @@ export default {
     methods : {
         auth : function() {
             this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
-            this.$axios.$post("http://localhost:8080/api/auth/accessible").then((response) => {
-                location.href = "/lk/users/"
+            this.$axios.$get("http://la4z.xyz:8080/api/auth/accessible").then((response) => {
+                location.href = "/"
                 return
             })
             this.$axios.$post("http://la4z.xyz:8080/users/login", {
@@ -66,7 +66,7 @@ export default {
                 location.href = "/lk/users"
             }).catch((err) => {
                 console.log(err)
-                alert(err)
+                alert(err.response.data.error)
             })
         }
     },
@@ -77,6 +77,11 @@ export default {
                 this.funtext = phrase
             }, i)
             i+=5000
+        })
+        this.$axios.setToken(localStorage.getItem("token"), 'Bearer')
+        this.$axios.$get("http://la4z.xyz:8080/api/auth/accessible").then((response) => {
+            location.href = "/lk/users/"
+            return
         })
     }
 }
